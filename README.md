@@ -1,4 +1,4 @@
-# ethio_advertizing
+# Ethio Advertizing
 
 A new Flutter project.
 
