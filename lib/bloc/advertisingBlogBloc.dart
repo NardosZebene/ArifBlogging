@@ -90,13 +90,12 @@ class BlogBloc {
         _writerSink.add(null);
       }
     });
-
-    //closing stream
-    void dispose() {
-      _blogStreamController.close();
-      _actionStreamController.close();
-      _writerActionStreamController.close();
-      _writerStreamController.close();
-    }
+  }
+  //closing stream
+  void dispose() {
+    _blogStreamController.close();
+    _actionStreamController.close();
+    _writerActionStreamController.close();
+    _writerStreamController.close();
   }
 }

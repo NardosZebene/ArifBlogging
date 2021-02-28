@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../view_model/advertisingBlogBloc.dart';
+import '../bloc/advertisingBlogBloc.dart';
 import '../repository/blogRepo.dart';
 import '../widgets/blogWidget.dart';
 import 'postAdvert.dart';
+import 'manageAdverts.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,6 +39,13 @@ class HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    blocBlog.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -53,6 +61,14 @@ class HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       color: Colors.blueGrey[800],
                     ),
+                  ),
+                  ListTile(
+                    title: Text('Search',
+                        style: TextStyle(
+                            color: Colors.blueGrey[800], fontSize: 15)),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/search');
+                    },
                   ),
                   prefs != null && prefs.getString('Token') != null
                       ? ListTile(
@@ -94,6 +110,18 @@ class HomePageState extends State<HomePage> {
                                   color: Colors.blueGrey[800], fontSize: 15)),
                           onTap: () {
                             Navigator.pushNamed(context, '/manageWriters');
+                          },
+                        )
+                      : Text(""),
+                  prefs != null &&
+                          prefs.getString('Role') != null &&
+                          prefs.getString('Role') == "admin"
+                      ? ListTile(
+                          title: Text('Manage Adverts',
+                              style: TextStyle(
+                                  color: Colors.blueGrey[800], fontSize: 15)),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/manageAdverts');
                           },
                         )
                       : Text(""),

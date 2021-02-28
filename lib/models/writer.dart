@@ -6,12 +6,18 @@ class Writer {
   String lastName;
   String email;
 
-  Writer({this.id, this.firstName, this.lastName, this.email});
+  Writer(
+      {this.id,
+        this.firstName,
+        this.lastName,
+        this.email
+      });
   factory Writer.fromJson(Map<String, dynamic> json) {
     return Writer(
         id: json['_id'],
         firstName: json['firstName'],
         lastName: json['lastName'],
-        email: json['email']);
+        email: json['email']
+    );
   }
 }

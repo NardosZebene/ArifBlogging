@@ -25,6 +25,7 @@ class BlogRepo {
           .timeout(Duration(seconds: 10)),
       retryIf: (e) => e is SocketException || e is TimeoutException,
     );
+    print(response);
     List<Blog> blogList = [];
     if (response.statusCode == 200) {
       var blogListResponse = json.decode(response.body);
@@ -113,6 +114,25 @@ class BlogRepo {
       retryIf: (e) => e is SocketException || e is TimeoutException,
     );
     print(response.body);
+    return response.statusCode;
+  }
+  //delete a blog
+  deleteBlog(String blogId) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + prefs.getString('Token')
+    };
+    var response = await retry(
+          () => http
+          .delete(
+          "$baseApi/adverts/$blogId",
+          headers: headers)
+          .timeout(Duration(seconds: 10)),
+      retryIf: (e) => e is SocketException || e is TimeoutException,
+    );
+    print(response);
     return response.statusCode;
   }
 }
