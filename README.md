@@ -1,6 +1,6 @@
 # Ethio Advertizing
 
-A new Flutter project.
+This app provide REST API to get Advertizing Data.
 
 ## Getting Started
 
