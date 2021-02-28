@@ -4,6 +4,7 @@ import '../models/blog.dart';
 import '../repository/blogRepo.dart';
 import '../models/writer.dart';
 
+
 class BlogEvent extends Equatable {
   @override
   List<Object> get props => [];
@@ -50,8 +51,8 @@ class BlogBloc {
   Stream<List<Writer>> get writerStream => _writerStreamController.stream;
 
   //writer action controllers
-  StreamController _writerActionStreamController =
-      StreamController<BlogEvent>();
+  StreamController _writerActionStreamController = StreamController<
+      BlogEvent>();
 
   StreamSink<BlogEvent> get writerActionSink =>
       _writerActionStreamController.sink;
@@ -84,7 +85,7 @@ class BlogBloc {
         } on Exception catch (e) {
           _writerSink.addError("Couldn't connect to server");
         }
-      } else if (event is Reloadblogs) {
+      }else if (event is Reloadblogs) {
         blogs = [];
         _writerSink.add(null);
       }
