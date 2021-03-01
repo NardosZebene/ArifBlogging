@@ -31,6 +31,7 @@ dependencies:
   progress_indicators: ^0.1.5
   http: ^0.12.1
   retry: ^3.0.1
+  flutter_bloc 6.1.2
   font_awesome_flutter:
   shared_preferences: ^0.5.12+4
   cached_network_image: ^2.3.2+1
