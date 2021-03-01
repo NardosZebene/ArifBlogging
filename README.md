@@ -1,6 +1,6 @@
 # Ethio Advertizing
 
-This app provide REST API to get Advertizing Data.
+This app Consume REST API to get Advertizing Data.
 
 ## Getting Started
 
